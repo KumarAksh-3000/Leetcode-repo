@@ -1,0 +1,46 @@
+import java.util.Scanner;
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int l = nums1.length+nums2.length;
+        int med[] = new int[l];
+        for(int i = 0;i<nums1.length;i++)
+           med[i] = nums1[i];
+           for(int i = nums1.length;i<l;i++)
+         med[i] = nums2[i-nums1.length];
+         int temp=0;
+         for(int i = 0;i<l-1;i++){
+            for(int j = 0;j<l-i-1;j++){
+                if(med[j]>med[j+1]){
+                    temp = med[j];
+                    med[j]=med[j+1];
+                    med[j+1] = temp;
+                }
+            }
+         }
+        
+        if(l%2==1)
+        return med[l/2];
+        else
+        return (med[l/2]+med[(l/2)-1])/2.0;
+        
+    }
+    public void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+        double median = 0.0;
+        if(m>=0&&m<=1000&&n>=0&&n<=1000)
+        {
+            int arr1[] = new int[m];
+            int arr2[] = new int[n];
+            for(int i = 0;i<m;i++)
+            arr1[i] = sc.nextInt();
+            for(int i = 0;i<n;i++)
+            arr2[i] = sc.nextInt();
+            median = findMedianSortedArrays(arr1,arr2);
+        }
+        System.out.println(median);
+        
+    }
+
+}
