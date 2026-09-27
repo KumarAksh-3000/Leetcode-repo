@@ -1,0 +1,26 @@
+import java.util.Scanner;
+class Solution {
+    public boolean isPalindrome(int x) {
+        if(x<0)
+        return false;
+        else{
+        int Num1 = 0,r=0,d=1;
+        int Num2=x;
+        String s = Integer.toString(x);
+        int l = s.length();
+        for(int i = 1;i<l;i++)
+        d*=10;
+        for(int i = 1;i<=l;i++){
+            r=Num2%10;
+            Num1 = Num1+(d*r);
+            Num2/=10;
+              d/=10;
+        }
+        if(Num1==x)
+        return true;
+        else
+        return false;
+        
+    }
+    }
+}
