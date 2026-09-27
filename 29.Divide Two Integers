@@ -1,0 +1,71 @@
+class Solution {
+    public int divide(int dividend, int divisor) {
+        if (dividend == Integer.MIN_VALUE && divisor == -1)
+            return Integer.MAX_VALUE;
+
+        long count=0;
+        if(dividend == 0)
+        return 0;
+        else if(dividend>0&&divisor>0)
+        {
+           long d1 = dividend, d2 = divisor;
+           while(d1>=d2){
+                long temp = d2, multiple = 1;
+                while(d1 >= (temp<<1)){
+                    temp <<= 1;
+                    multiple <<= 1;
+                }
+                d1 = d1-temp;
+                count += multiple;
+           }
+           return (int) count;
+        }
+        else if(dividend<0&&divisor<0)
+        {
+            long d1 = -(long)dividend;
+            long d2 = -(long)divisor;
+           while(d1>=d2){
+                long temp = d2, multiple = 1;
+                while(d1 >= (temp<<1)){
+                    temp <<= 1;
+                    multiple <<= 1;
+                }
+                d1 = d1-temp;
+                count += multiple;
+           }
+           return (int) count;
+        }
+        else if(dividend <0){
+            long d1 = -(long)dividend;
+            long d2 = divisor;
+            while(d1>=d2){
+                long temp = d2, multiple = 1;
+                while(d1 >= (temp<<1)){
+                    temp <<= 1;
+                    multiple <<= 1;
+                }
+                d1 = d1-temp;
+                count += multiple;
+           }
+           return (int)(count-count-count);
+
+        }
+        else{
+            long d1 = dividend;
+            long d2 = -(long)divisor;
+            while(d1>=d2){
+                long temp = d2, multiple = 1;
+                while(d1 >= (temp<<1)){
+                    temp <<= 1;
+                    multiple <<= 1;
+                }
+                d1 = d1-temp;
+                count += multiple;
+           }
+           return (int)(count-count-count);
+
+        }
+        
+        
+    }
+}
