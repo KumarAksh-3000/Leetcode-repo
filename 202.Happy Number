@@ -1,0 +1,16 @@
+class Solution {
+    public boolean isHappy(int n) {
+        int num1 = n,temp=0,digit=0;
+        while(num1!=1&&num1!=4){
+            while(num1>0){
+                digit = num1%10;
+            temp = temp + (digit*digit);
+            num1/=10;
+            }
+            num1 = temp;
+            temp=0;
+            }
+            return num1==1;
+        
+    }
+}
