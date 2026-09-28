@@ -1,0 +1,11 @@
+class Solution {
+    public int titleToNumber(String columnTitle) {
+        int length = columnTitle.length();
+        int result = 0,value=0;
+        for(int i =0;i<length;i++){
+            value = columnTitle.charAt(i)-'A'+1;
+            result = result*26+value;
+        }
+        return result;
+    }
+}
