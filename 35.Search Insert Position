@@ -1,0 +1,22 @@
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int length = nums.length;
+        int left = 0,right = length-1;
+        int mid=0,count = 0;
+        while(left<=right){
+            mid = (left+right)/2;
+            if(target==nums[mid]){
+                count = 1;
+            break;
+            }
+            else if(target<nums[mid])
+            right = mid-1;
+            else
+            left = mid+1;
+        }
+        if(count==1)
+        return mid;
+        else
+        return left;
+    }
+}
